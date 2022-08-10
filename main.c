@@ -5,7 +5,6 @@
 int main()
 {
 	char *promtp = "simple_shell $";
-	int status = 0;
 	char *line = NULL;
 	size_t line_size = 0;
 
