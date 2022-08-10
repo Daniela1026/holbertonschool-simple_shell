@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int main()
 {
@@ -10,11 +11,11 @@ int main()
 
 	while (1)
 	{
-		if (isatty(STDIN_FILENO))
+		if (isatty(0))
 			printf("%s", promtp);
-		getline(&line, &line_size, STDIN_FILENO);
+		getline(&line, &line_size, stdin);
 		printf("La linea leida es: %s\n",line);
-		if (!isatty(STDIN_FILENO))
+		if (!isatty(0))
 			break;
 	}
 	return (0);
