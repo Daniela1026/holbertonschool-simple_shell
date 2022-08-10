@@ -2,6 +2,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+/**
+* main - Display a prompt and wait for the
+* user to type a command
+* Return: Always 0.
+*/
+
 int main()
 {
 	char *promtp = "simple_shell $";
