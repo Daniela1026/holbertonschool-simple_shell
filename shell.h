@@ -1,6 +1,6 @@
-#ifndef MAIN_H_
-#define MAIN_H_
+#ifndef SHELL_H_
+#define SHELL_H_
 
-int main(void);
+int hell(void);
 
 #endif
