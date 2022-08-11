@@ -6,30 +6,57 @@
  *
  *
  */
-char **_tokens(char *str)
+char **_tokens(char *line, ssize_t num)
 {
-	char **buffer;
-	char *tkn;
-	unsigned int value = 0;
-
-	buffer = malloc(sizeof(char) *buffer);
-	if (!buffer)
+	char *copy_line;
+	char *delimiter = " \n";
+	int ntoken = 0;
+	int i = 0;
+	char *tok;
+	char **tokens;
+	
+	copy_line = malloc(sizeof(char) * num);
+	
+	strcpy(copy_line, line);
+	
+	tok = strtok(line, delimiter);
+	
+	while(tok != NULL)
 	{
-		errors(1);
-		exit(EXIT_FAILURE);
-        }
-
-	buffer = strtok(str, "\n\t\r");
-
-	while (buffer != NULL)
-	{
-		buffer[value] = tkn;
-		tkn = strtok(NULL, "\n\t\r");
-		value++;
+		ntoken++;
+		tok = strtok(NULL, delimiter);
 	}
+	ntoken++;
+	
+	tokens = malloc(sizeof(char *) * ntoken);
+	
+	tok = strtok(copy_line, delimiter);
+	
+	while(tok != NULL)
+	{
+		tokens[i] = malloc(sizeof(char) * strlen(tok));
+		strcpy(tokens[i], tok);
+		i++;
+		tok = strtok(NULL, delimiter);
+	}
+	
+	tokens[i] = NULL;
 
-	buffer[value] = NULL;
+    return (tokens);
+}
 
+/**
+ *
+ *
+ *
+ *
+ */
+char *get_line(ssize_t *num)
+{
+	char *buffer = NULL;
+	size_t i = 0;
+
+	*num = getline(&buffer, &i, stdin);
 	return (buffer);
 }
 
@@ -37,41 +64,66 @@ char **_tokens(char *str)
  *
  *
  *
+ *
  */
-void errors(int error)
+int execute(char **tokens)
 {
-	switch (error)
+	char *command;
+	char **intg = entorn;
+	int status;
+
+	pro_t process;
+	
+	builtin_execute(tokens);
+	
+	command = _route(tokens[0]);
+	if (command == NULL)
 	{
-		case 1:
-			write(STDERR_FILENO, ERR_MALLOC, _strlen_(ERR_MALLOC));
-			break;
-		case 2:
-			perror("Error");
-			break;
-		case 3:
-			write(STDERR_FILENO, ERR_FORK, _strlen_(ERR_FORK));
-			perror("Error");
-			break;
-		case 4:
-			write(STDERR_FILENO, ERR_PATH, _strlen_(ERR_PATH));
-			break;
-		default:
-			return;
+		return (-1);
 	}
+	
+	process = fork();
+	
+	if (process == 0)
+	{
+		execve(command, tokens, intg);
+		perror(tokens[0]);
+		return (-1);
+	}
+	
+	else if (process > 0)
+	{
+		do
+		{
+			waitpid(process, &status, WUNTRACED);
+		}
+		while (!WIFEXITED(status) && !WIFSIGNALED(status));
+	}
+	else
+	{
+		perror("hsh");
+		return (-1);
+	}
+	return (0);
 }
 
 /**
  *
  *
  *
- */
-
-int _strlen_(char *str)
+ *
+*/
+char * _route(char *command)
 {
-	int len = 0;
-
-	while (str[len] != '\0')
-		len++;
-
-	return (len);
 }
+
+/**
+ *
+ *
+ *
+ *
+*/
+void builtin_execute(char **args)
+{
+}
+

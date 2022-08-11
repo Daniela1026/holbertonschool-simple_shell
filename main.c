@@ -7,41 +7,34 @@
 
 int main(void)
 {
-	char *promtp = "simple_shell $";
-	char *line = NULL;
+	char *line;
 	char **token;
-	int execute;
-	size_t line_size = 0;
-	size_t input;
-
+	ssize_t num;
+	int code_return = 0;
+	
 	while (1)
 	{
-		if (isatty(STDIN_FILENO))
-			printf("%s", promtp);
-
-		write(STDIN_FILENO, "$", 2);
-		getline(&line, &line_size, stdin);
-		printf("La linea leida es: %s\n",line);
-
-		token = _tokens(line);
-		if (!token[0])
-			continue;
-
-		execute = builtin_execute(token);
-	
-		if (execute == 0 && execute == -1)
+		write(2, "$ ", 2);
+		
+		line = get_line(&num);
+		
+		if (num == -1)
 		{
-			free(token);
-			free(line);
+			write(2, "Exiting shell....\n", 18);
+			exit(1);
 		}
+		
+		token = _tokens(line, num);
+		
+		if (token[0] != NULL)
+		{
+			code_return = execute(token);
+		}
+		
+		free(token);
+		free(line);
 
-		if (execute == 0)
-			continue;
-		if (execute == -1)
-			break;
+    }
 
-		if (!isatty(0))
-			break;
-	}
-	return (0);
+    return (code_return);
 }
