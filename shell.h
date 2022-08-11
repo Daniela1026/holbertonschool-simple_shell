@@ -16,5 +16,8 @@
 
 int main (void);
 int hell(void);
+char **_tokens(char *str);
+void errors(int error);
+int _strlen_(char *str);
 
 #endif /* _SHELL_H_ */

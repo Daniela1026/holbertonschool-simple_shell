@@ -19,11 +19,11 @@ int main(void)
 		if (isatty(STDIN_FILENO))
 			printf("%s", promtp);
 
-		write(STDIN_FILENO, "$", 2)
+		write(STDIN_FILENO, "$", 2);
 		getline(&line, &line_size, stdin);
 		printf("La linea leida es: %s\n",line);
 
-		token = tokenizer(line);
+		token = _tokens(line);
 		if (!token[0])
 			continue;
 
@@ -58,7 +58,7 @@ char **_tokens(char *str)
 	char *tkn;
 	unsigned int value = 0;
 
-	buffer = malloc(sizeof(char) *buffer);
+	buffer = malloc(sizeof(char) * BUFFER);
 	if (!buffer)
 	{
 		errors(1);
@@ -89,7 +89,36 @@ void errors(int error)
 	switch (error)
 	{
 		case 1:
-			write(STDERR_FILENO, ERR_MALLOC, _strlen(ERR_MALLOC));
+			write(STDERR_FILENO, ERR_MALLOC, _strlen_(ERR_MALLOC));
 			break;
 		case 2:
+			perror("Error");
+			break;
+		case 3:
+			write(STDERR_FILENO, ERR_FORK, _strlen_(ERR_FORK));
+			perror("Error");
+			break;
+		case 4: 
+			write(STDERR_FILENO, ERR_PATH, _strlen_(ERR_PATH));
+			break;
 
+		default:
+			return;
+	}
+}
+
+/**
+ *
+ *
+ *
+ */
+
+int _strlen_(char *str)
+{
+	int len = 0;
+
+	while (str[len] != '\0')
+		len++;
+
+	return (len);
+}
