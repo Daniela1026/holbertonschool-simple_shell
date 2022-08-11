@@ -3,8 +3,7 @@
 #include <stdlib.h>
 
 /**
-* main - Display a prompt and wait for the
-* user to type a command
+* main - Display a prompt
 * Return: Always 0.
 */
 
