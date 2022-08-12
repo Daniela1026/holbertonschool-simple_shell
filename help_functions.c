@@ -1,129 +1,79 @@
 #include "shell.h"
-
-/**
- *
- *
- *
- *
- */
-char **_tokens(char *line, ssize_t num)
-{
-	char *copy_line;
-	char *delimiter = " \n";
-	int ntoken = 0;
-	int i = 0;
-	char *tok;
+ 
+ /**
+  *
+  *
+  *
+  *
+  */
+ char *read_line(void)
+ {
+ 	char *line = NULL;
+	size_t buflen = 0;
+ 
+	getline(&line, &buflen, stdin);
+ 
+	return (line);
+ }
+ 
+ /**
+  *
+  *
+  *
+  */
+ char **split_line(char *line)
+ {
+	int len = 0;
+	int buffer = 16;
 	char **tokens;
-	
-	copy_line = malloc(sizeof(char) * num);
-	
-	strcpy(copy_line, line);
-	
-	tok = strtok(line, delimiter);
-	
-	while(tok != NULL)
+	char *delim = "\n\t\r";
+	char *token = strtok(line, delim);
+ 
+	tokens = malloc(buffer * sizeof(char*));
+	if (!tokens)
 	{
-		ntoken++;
-		tok = strtok(NULL, delimiter);
+		perror("Error malloc");
+		exit(1);
 	}
-	ntoken++;
-	
-	tokens = malloc(sizeof(char *) * ntoken);
-	
-	tok = strtok(copy_line, delimiter);
-	
-	while(tok != NULL)
+	while (token != NULL)
 	{
-		tokens[i] = malloc(sizeof(char) * strlen(tok));
-		strcpy(tokens[i], tok);
-		i++;
-		tok = strtok(NULL, delimiter);
-	}
-	
-	tokens[i] = NULL;
-
-    return (tokens);
-}
-
-/**
- *
- *
- *
- *
- */
-char *get_line(ssize_t *num)
-{
-	char *buffer = NULL;
-	size_t i = 0;
-
-	*num = getline(&buffer, &i, stdin);
-	return (buffer);
-}
-
-/**
- *
- *
- *
- *
- */
-int execute(char **tokens)
-{
-	char *command;
-	char **intg = entorn;
-	int status;
-
-	pro_t process;
-	
-	builtin_execute(tokens);
-	
-	command = _route(tokens[0]);
-	if (command == NULL)
-	{
-		return (-1);
-	}
-	
-	process = fork();
-	
-	if (process == 0)
-	{
-		execve(command, tokens, intg);
-		perror(tokens[0]);
-		return (-1);
-	}
-	
-	else if (process > 0)
-	{
-		do
+		tokens[len] = token;
+		len++;
+ 
+		if (len >= buffer)
 		{
-			waitpid(process, &status, WUNTRACED);
+			buffer = (int) (buffer * 1.5);
+			tokens = realloc(tokens, buffer * sizeof(char*));
+			if (!tokens)
+			{
+ 				perror("Error alloc");
+				exit(1);
+ 			}
 		}
-		while (!WIFEXITED(status) && !WIFSIGNALED(status));
+ 		token = strtok(NULL, delim);
 	}
-	else
+	tokens[len] = NULL;
+	return (tokens);
+}
+void execute(char **args)
+ {
+ 	pid_t my_pid;
+ 	int status;
+
+ 	my_pid = fork();
+
+ 	if (my_pid == 0)
+ 	{
+ 		_args(args);
+ 		perror ("Error arguments");
+ 		exit(1);
+	}
+	if (my_pid > 0)
 	{
-		perror("hsh");
-		return (-1);
+		do {
+		waitpid(my_pid, &status, WUNTRACED);
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-	return (0);
-}
-
-/**
- *
- *
- *
- *
-*/
-char * _route(char *command)
-{
-}
-
-/**
- *
- *
- *
- *
-*/
-void builtin_execute(char **args)
-{
-}
-
+ 	else
+	perror("Error status");
+ }
