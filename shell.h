@@ -17,8 +17,9 @@
 
 int _args(void);
 int main(void);
-char *read_line(void);
+char *read_line(ssize_t *line);
 char **split_line(char *line);
 int execute(char **args);
+char** token_generate(char *line_read, ssize_t num);
 
 #endif /* _SHELL_H_ */

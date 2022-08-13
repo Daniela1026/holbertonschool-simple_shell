@@ -6,14 +6,14 @@
   *
   *
   */
- char *read_line(void)
+ char *read_line(ssize_t *line)
  {
- 	char *line = NULL;
+ 	char *buffer = NULL;
 	size_t buflen = 0;
  
-	getline(&line, &buflen, stdin);
+	*line = getline(&buffer, &buflen, stdin);
  
-	return (line);
+	return (buffer);
  }
  
  /**
@@ -56,17 +56,6 @@
 	return (tokens);
 }
 
-/*int _args(void)
-{
-        char *args[2];
-	char *environ[] = NULL;
-
-        args[0] = "/bin/ls";
-        args[1] = "ls";
-        execve(args[0], args, NULL);
-
-        return (EXIT_SUCCESS);
-}*/
 
 int execute(char **args)
 {
@@ -95,4 +84,41 @@ int execute(char **args)
 		wait(&status);
 
 	return (0);
+}
+
+char** token_generate(char *line_read, ssize_t num)
+{
+	char *copy_line;
+	char *delimi = "\n";
+	int numtokens = 0;
+	int i = 0;
+	char *token;
+	char **tokens;
+
+	copy_line = malloc(sizeof(char) * num);
+			
+			strcpy(copy_line, line_read);
+			
+			token = strtok(line_read, delimi);
+			
+			while(token != NULL)
+			{
+			numtokens++;
+			token = strtok(NULL, delimi);
+			}
+			numtokens++;
+			
+			tokens = malloc(sizeof(char *) * numtokens);
+
+    token = strtok(copy_line, delimi);
+    
+    while(token != NULL)
+    {
+    tokens[i] = malloc(sizeof(char) * strlen(token));
+    strcpy(tokens[i], token);
+    i++;
+    token = strtok(NULL, delimi);
+    }
+    tokens[i] = NULL;
+    return (tokens);
 }
