@@ -11,6 +11,7 @@ int main(void)
 	char *line;
  	char **tokens;
 	ssize_t num_read;
+	int returncod = 0;
 
  	while (true)
  	{
@@ -27,11 +28,10 @@ int main(void)
 		}
  
 		if (tokens[0] != NULL)
-		execute(tokens);
+		returncod = execute(tokens);
 
  		free(tokens);
 		free(line);
  	}
- 	free(line);
-	return (EXIT_SUCCESS);
+	return (returncod);
  }
