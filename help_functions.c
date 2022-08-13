@@ -55,25 +55,44 @@
 	tokens[len] = NULL;
 	return (tokens);
 }
-void execute(char **args)
- {
- 	pid_t my_pid;
- 	int status;
 
- 	my_pid = fork();
+/*int _args(void)
+{
+        char *args[2];
+	char *environ[] = NULL;
 
- 	if (my_pid == 0)
- 	{
- 		_args(args);
- 		perror ("Error arguments");
- 		exit(1);
-	}
-	if (my_pid > 0)
+        args[0] = "/bin/ls";
+        args[1] = "ls";
+        execve(args[0], args, NULL);
+
+        return (EXIT_SUCCESS);
+}*/
+
+int execute(char **args)
+{
+	pid_t my_pid;
+	int status;
+
+	if (strncmp("exit", args[0], 4) == 0)
+		return (-1);
+
+	my_pid = fork();
+
+	if (my_pid == -1)
 	{
-		do {
-		waitpid(my_pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		perror("Error");
+		return (1);
 	}
- 	else
-	perror("Error status");
- }
+	else if (my_pid == 0)
+	{
+		if (execve(args[0], args, NULL) == -1)
+		{
+			perror("Error");
+			exit(-1);
+		}
+	}
+	else
+		wait(&status);
+
+	return (0);
+}

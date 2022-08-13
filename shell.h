@@ -19,6 +19,6 @@ int _args(void);
 int main(void);
 char *read_line(void);
 char **split_line(char *line);
-void execute(char **args);
+int execute(char **args);
 
 #endif /* _SHELL_H_ */
