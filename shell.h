@@ -33,5 +33,7 @@ void h_exit(char **args);
 void h_cd(char **args);
 void h_help(char **args);
 void h_env(char **args);
+char * _which(char *command);
+
 
 #endif /* _SHELL_H_ */
