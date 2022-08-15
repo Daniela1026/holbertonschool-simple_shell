@@ -1,14 +1,16 @@
 #include "shell.c"
 
 /**
- *
- *
- *
- */
+* builtin_cmd - We get the commands
+* struct builtin - struct
+* @args:  Character Pointer
+* return: args
+*/
+
 void builtin_cmd(char **args)
 {
-        int num = 0;
-        int i;
+	int num = 0;
+	int i;
 
 	struct builtin builtins[] = {
 		{"exit", h_exit},
@@ -29,14 +31,20 @@ void builtin_cmd(char **args)
 }
 
 /**
- *
- *
- */
+* h_exit - Commands the builtin
+* @args: Character Pointer
+*/
+
 void h_exit(char **args)
 {
 	(void)args;
 	exit(0);
 }
+
+/**
+* h_cd - Commands the builtin
+* @args: Character Pointer
+*/
 
 void h_cd(char **args)
 {
@@ -44,7 +52,8 @@ void h_cd(char **args)
 	{
 		fprintf(stderr, "hsh: cd: missing argument\n");
 	}
-	else {
+	else
+	{
 		if (chdir(args[1]) != 0)
 		{
 			perror("hsh: cd");
@@ -53,9 +62,10 @@ void h_cd(char **args)
 }
 
 /**
- *
- *
- */
+* h_help - Commands the builtin
+* @args: Character Pointer
+*/
+
 void h_help(char **args)
 {
 	char *helptext =
@@ -69,9 +79,10 @@ void h_help(char **args)
 }
 
 /**
- *
- *
- */
+* h_env - Commands the builtin
+* @args: Character Pointer
+*/
+
 void h_env(char **args)
 {
 	char **env = environ;
