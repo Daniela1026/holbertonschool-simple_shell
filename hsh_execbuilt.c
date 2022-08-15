@@ -25,9 +25,9 @@ char *read_line(ssize_t *line)
 int execute(char **args)
 {
 	pid_t my_pid;
-	int status;
-	char **envp;
-	char *command;
+	int status = 0;
+	char **envp = NULL;
+	char *command = NULL;
 
 	envp = environ;
 
@@ -64,14 +64,14 @@ int execute(char **args)
  */
 char **token_generate(char *line_read, ssize_t num)
 {
-	char *copy_line;
-	char *delimi = "\n";
+	char *copy_line = NULL;
+	char *delimi = " \n\t";
 	int numtokens = 0;
 	int i = 0;
-	char *token;
-	char **tokens;
+	char *token = NULL;
+	char **tokens = NULL;
 
-	copy_line = malloc(sizeof(char) * num);
+	copy_line = malloc(sizeof(char) * num + 2);
 
 	strcpy(copy_line, line_read);
 	token = strtok(line_read, delimi);
@@ -83,13 +83,13 @@ char **token_generate(char *line_read, ssize_t num)
 	}
 	numtokens++;
 
-	tokens = malloc(sizeof(char *) * numtokens);
+	tokens = malloc(sizeof(char *) * numtokens + 2);
 
 	token = strtok(copy_line, delimi);
 
 	while (token != NULL)
 	{
-	tokens[i] = malloc(sizeof(char) * strlen(token));
+	tokens[i] = malloc(sizeof(char) * strlen(token) + 2);
 		strcpy(tokens[i], token);
 		i++;
 		token = strtok(NULL, delimi);
@@ -105,8 +105,9 @@ char **token_generate(char *line_read, ssize_t num)
  */
 char *_which(char *command)
 {
-	char *path, *copy_path, *path_token, *dir;
-	int command_length, directory_length;
+	char *path = NULL, *copy_path = NULL;
+	char *path_token = NULL, *dir = NULL;
+	int command_length = 0, directory_length = 0;
 	struct stat testfile;
 
 	/* check if the command given is a directory and pass it directly to execve */
