@@ -89,12 +89,13 @@ char **token_generate(char *line_read, ssize_t num)
 
 	while (token != NULL)
 	{
-		tokens[i] = malloc(sizeof(char) * strlen(token));
+	tokens[i] = malloc(sizeof(char) * strlen(token));
 		strcpy(tokens[i], token);
 		i++;
 		token = strtok(NULL, delimi);
 	}
 	tokens[i] = NULL;
+	free(copy_line);
 	return (tokens);
 }
 
