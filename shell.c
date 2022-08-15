@@ -8,13 +8,14 @@
  */
 int main(void)
 {
+	int exec = 0;
 	char *line;
 	char **tokens;
 	ssize_t num_read;
 
 	while (true)
 	{
-		if (isatty(STDIN_FILENO) == 1)
+		if (isatty(STDIN_FILENO) == 1 && exec == 0)
 		{
 			write(STDOUT_FILENO, "$ ", 2);
 			line = read_line(&num_read);
