@@ -20,6 +20,8 @@ int main(void)
 			line = read_line(&num_read);
 			tokens = token_generate(line, num_read);
 			execute(tokens);
+			free(line);	
+			free(tokens);
 
 			if (num_read == EOF)
 			{
@@ -32,11 +34,9 @@ int main(void)
 		else
 		{
 			line = read_line(&num_read);
-			write(STDOUT_FILENO, tokens, num_read);
+			write(STDOUT_FILENO, line, num_read);
 			break;
 		}
-		free(tokens);
-		free(line);
 	}
 	return (EXIT_SUCCESS);
 }
