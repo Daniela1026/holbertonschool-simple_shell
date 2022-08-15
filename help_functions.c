@@ -106,30 +106,29 @@ char** token_generate(char *line_read, ssize_t num)
 
 	copy_line = malloc(sizeof(char) * num);
 			
-			strcpy(copy_line, line_read);
+	strcpy(copy_line, line_read);		
+	token = strtok(line_read, delimi);
 			
-			token = strtok(line_read, delimi);
+	while(token != NULL)
+	{
+		numtokens++;
+		token = strtok(NULL, delimi);
+	}
+	numtokens++;
 			
-			while(token != NULL)
-			{
-			numtokens++;
-			token = strtok(NULL, delimi);
-			}
-			numtokens++;
-			
-			tokens = malloc(sizeof(char *) * numtokens);
+	tokens = malloc(sizeof(char *) * numtokens);
 
-    token = strtok(copy_line, delimi);
+	token = strtok(copy_line, delimi);
     
-    while(token != NULL)
-    {
-    tokens[i] = malloc(sizeof(char) * strlen(token));
-    strcpy(tokens[i], token);
-    i++;
-    token = strtok(NULL, delimi);
-    }
-    tokens[i] = NULL;
-    return (tokens);
+	while(token != NULL)
+	{
+		tokens[i] = malloc(sizeof(char) * strlen(token));
+		strcpy(tokens[i], token);
+		i++;
+		token = strtok(NULL, delimi);
+	}
+	tokens[i] = NULL;
+	return (tokens);
 }
 
 
@@ -201,7 +200,7 @@ void h_env(char **args)
 
 
 
-char * _which(char *command)
+char *_which(char *command)
 {
     char *path, *copy_path, *path_token, *dir;
     int command_length, directory_length;

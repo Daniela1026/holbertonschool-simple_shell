@@ -11,27 +11,27 @@ int main(void)
 	char *line;
  	char **tokens;
 	ssize_t num_read;
-	int returncod = 0;
 
 	while (1)
-	{
+	{	
 		write(STDOUT_FILENO, "$ ", 2);
 		line = read_line(&num_read);
 		tokens = split_line(line);
 
 		tokens = token_generate(line, num_read);
 
-		if (num_read == -1)
+		if (num_read == EOF)
 		{
 			write(2, "Exiting shell....\n", 18);
-			exit(1);
+			free(line);
+			exit(0);
 		}
 
 		if (tokens[0] != NULL)
-			returncod = execute(tokens);
+			execute(tokens);
+		}
 
-		free(tokens);
-		free(line);
-	}
-	return (returncod);
+	free(tokens);
+	free(line);
+	return (EXIT_SUCCESS);
 }	
