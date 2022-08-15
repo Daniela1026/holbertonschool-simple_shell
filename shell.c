@@ -8,18 +8,18 @@
  */
 int main(void)
 {
-	int exec = 0;
 	char *line;
 	char **tokens;
 	ssize_t num_read;
 
 	while (true)
 	{
-		if (isatty(STDIN_FILENO) == 1 && exec == 0)
+		if (isatty(STDIN_FILENO))
 		{
 			write(STDOUT_FILENO, "$ ", 2);
 			line = read_line(&num_read);
 			tokens = token_generate(line, num_read);
+			execute(tokens);
 
 			if (num_read == EOF)
 			{
@@ -28,9 +28,6 @@ int main(void)
 			}
 			if (num_read == 1)
 				continue;
-
-			if (tokens[0] != NULL)
-				execute(tokens);
 		}
 		else
 		{
