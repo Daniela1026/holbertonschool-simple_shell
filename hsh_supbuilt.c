@@ -1,4 +1,4 @@
-#include "shell.c"
+#include "shell.h"
 
 /**
 * builtin_cmd - We get the commands
