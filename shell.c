@@ -1,37 +1,44 @@
-  #include "shell.h"
+#include "shell.h"
 
 /**
  * main
- * 
- * 
- * 
+ *
+ *
+ *
  */
 int main(void)
 {
 	char *line;
- 	char **tokens;
+	char **tokens;
 	ssize_t num_read;
 
-	while (1)
-	{	
-		write(STDOUT_FILENO, "$ ", 2);
-		line = read_line(&num_read);
-		tokens = split_line(line);
-
-		tokens = token_generate(line, num_read);
-
-		if (num_read == EOF)
+	while (true)
+	{
+		if (isatty(STDIN_FILENO) == 1)
 		{
-			write(2, "Exiting shell....\n", 18);
-			free(line);
-			exit(0);
-		}
+			write(STDOUT_FILENO, "$ ", 2);
+			line = read_line(&num_read);
+			tokens = token_generate(line, num_read);
 
-		if (tokens[0] != NULL)
-			execute(tokens);
-		}
+			if (num_read == EOF)
+			{
+				write(2, "Exiting shell....\n", 18);
+				exit(0);
+			}
+			if (num_read == 1)
+				continue;
 
-	free(tokens);
-	free(line);
+			if (tokens[0] != NULL)
+				execute(tokens);
+		}
+		else
+		{
+			line = read_line(&num_read);
+			write(STDOUT_FILENO, tokens, num_read);
+			break;
+		}
+		free(tokens);
+		free(line);
+	}
 	return (EXIT_SUCCESS);
-}	
+}
