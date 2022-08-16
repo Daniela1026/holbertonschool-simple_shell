@@ -9,7 +9,8 @@
 int main(void)
 {
 	char *line;
-	char **tokens;
+	char *tokens[1024];
+	char *delim = " \n\t";
 	ssize_t num_read;
 
 	while (true)
@@ -24,10 +25,11 @@ int main(void)
 		if (num_read == 1)
 			continue;
 
-		tokens = token_generate(line, num_read);
+/*		tokens = token_generate(line, num_read);*/
+		token_generate(tokens, line, delim);
 		execute(tokens);
-		free(line);	
-		free(tokens);
+		free(line);
+
 	}
 	return (EXIT_SUCCESS);
 }
