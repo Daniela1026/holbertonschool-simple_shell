@@ -42,8 +42,9 @@ int execute(char **args)
 	if (my_pid == 0)
 	{
 		execve(args[0], args, envp);
+		free(args);
 		perror("hsh");
-		exit(1);
+		exit(EXIT_SUCCESS);
 	}
 	else if (my_pid > 0)
 	{
@@ -54,7 +55,7 @@ int execute(char **args)
 	else
 		perror("hsh");
 
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 /**
@@ -62,53 +63,20 @@ int execute(char **args)
  *
  *
  */
-char **token_generate(char *line_read, ssize_t num)
+void token_generate(char **tokens, char *line, char *delim)
 {
-	char *copy_line = NULL;
-	char *delimi = " \n\t";
-	int numtokens = 0;
-	int i = 0;
+	ssize_t i = 0;
 	char *token = NULL;
-	char **tokens = NULL;
 
-	copy_line = malloc(sizeof(char) * num + 1);
-	if (!copy_line)
-	{
-		perror("Allocation Error");
-		exit(EXIT_FAILURE);
-	}
-	strcpy(copy_line, line_read);
-	token = strtok(line_read, delimi);
+	token = strtok(line, delim);
 
 	while (token != NULL)
 	{
-		numtokens++;
-		token = strtok(NULL, delimi);
-	}
-	numtokens++;
-
-	tokens = malloc(sizeof(char *) * numtokens);
-	if (!tokens)
-	{
-		perror("Allocation Error");
-		exit(EXIT_FAILURE);
-	}
-	token = strtok(copy_line, delimi);
-
-	while (token != NULL)
-	{
-		tokens[i] = malloc(sizeof(char) * strlen(token) + 1);
-		if (!tokens)
-		{
-			perror("Allocation Error");
-			exit(EXIT_FAILURE);
-		}
-		strcpy(tokens[i], token);
+		tokens[i] = token;
 		i++;
-		token = strtok(NULL, delimi);
+		token = strtok(NULL, delim);
 	}
 	tokens[i] = NULL;
-	return (tokens);
 }
 
 /**
