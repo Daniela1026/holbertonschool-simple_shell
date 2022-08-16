@@ -2,9 +2,9 @@
 
 /**
  *_strlen - length of the string
- *@string:
+ *@string: sring
  *
- *Return: 
+ *Return: length of the string
  */
 int _strlen(char *str)
 {
@@ -21,9 +21,10 @@ int _strlen(char *str)
 
 /**
  *_strcat - concatenates two strings
- *@dest:
- *@src:
- *Return:
+ *@dest: concatenations string
+ *@src: source to string
+ *
+ *Return: ret
  */
 char *_strcat(char *dest, char *src)
 {
@@ -39,10 +40,10 @@ char *_strcat(char *dest, char *src)
 
 /**
  *_strcpy - copies string
- *@dest:
- *@src:
+ *@dest: copy string
+ *@src: source to string
  *
- *Return:
+ *Return: copy string
  */
 char *_strcpy(char *dest, char *src)
 {
@@ -61,9 +62,9 @@ char *_strcpy(char *dest, char *src)
 
 /**
  *_strdup - duplicate one string
- *@str:
+ *@str: string
  *
- *Return:
+ *Return: dubolicate string
  */
 char *_strdup(const char *str)
 {
@@ -87,9 +88,11 @@ char *_strdup(const char *str)
 }
 
 /**
+ *_strcmp - camparation string
+ *@dest: string comparation
+ *@src: source to string
  *
- *
- *
+ *Return: compartion string
  */
 int _strcmp(char *dest, char *src)
 {
