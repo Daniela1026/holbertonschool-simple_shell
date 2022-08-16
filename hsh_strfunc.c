@@ -1,36 +1,18 @@
-#include "shell.c"
+#include "shell.h"
 
 /**
  *
  *
  *
  */
-int _strlen(char *s)
+size_t _strlen(const char *s)
 {
-	int i = 0;
+	size_t len = 0;
 
-	while (s[i] != '\n')
-		i++;
+	while (s[len] != '\0')
+		len++;
 
-	return (i);
-}
-
-/**
- *
- *
- *
- */
-int _strcmp(char *s1, char *s2)
-{
-	int a = 0, b = 0;
-
-	while (s1[a] != '\0' && b == 0)
-	{
-		b = s1[a] - s2[a];
-		a++;
-	}
-
-	return (b);
+	return (len);
 }
 
 /**
@@ -60,4 +42,42 @@ char *_strdup(char *str)
 
 	buff[i] = '\0';
 	return (buff);
+}
+
+/**
+ *_strcpy - copies string
+ *@dest: copy of string
+ *@src: source of string
+ *
+ *return: copy of the src
+ */
+char *_strcpy(char *dest, const char *src)
+{
+	size_t i = 0;
+
+	while (*src[i] != '\0')
+	{
+		*dest[i]  = *src[i];
+		i++;
+	}
+	*dest[i] = '\0';
+	return (dest);
+}
+
+/**
+ *
+ *
+ *
+ */
+char *_strcat(char *dest, const char *src)
+{
+	char *ret = dest;
+
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = *src;
+
+	return (ret);
 }
