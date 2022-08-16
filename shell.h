@@ -28,7 +28,7 @@ int execute(char **args);
 void token_generate(char **tokens, char *line, char *delim);
 char *_which(char *command);
 
-size_t _strlen(const char *s);
+int _strlen(char *str);
 char *_strdup(char *str);
 char *_strcpy(char *dest, const char *src);
 char *_strcat(char *dest, char *src);
