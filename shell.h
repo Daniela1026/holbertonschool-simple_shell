@@ -26,15 +26,18 @@ int main(void);
 char *read_line(ssize_t *line);
 int execute(char **args);
 void token_generate(char **tokens, char *line, char *delim);
-int _strlen(char *s);
-int _strcmp(char *s1, char *s2);
+char *_which(char *command);
+
+size_t _strlen(const char *s);
 char *_strdup(char *str);
+char *_strcpy(char *dest, const char *src);
+char *_strcat(char *dest, char *src);
+
 void builtin_cmd(char **args);
 void h_exit(char **args);
 void h_cd(char **args);
 void h_help(char **args);
 void h_env(char **args);
-char * _which(char *command);
 
 
 #endif /* _SHELL_H_ */
