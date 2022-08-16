@@ -71,8 +71,12 @@ char **token_generate(char *line_read, ssize_t num)
 	char *token = NULL;
 	char **tokens = NULL;
 
-	copy_line = malloc(sizeof(char) * num + 2);
-
+	copy_line = malloc(sizeof(char) * num + 1);
+	if (!copy_line)
+	{
+		perror("Allocation Error");
+		exit(EXIT_FAILURE);
+	}
 	strcpy(copy_line, line_read);
 	token = strtok(line_read, delimi);
 
@@ -83,19 +87,27 @@ char **token_generate(char *line_read, ssize_t num)
 	}
 	numtokens++;
 
-	tokens = malloc(sizeof(char *) * numtokens + 2);
-
+	tokens = malloc(sizeof(char *) * numtokens);
+	if (!tokens)
+	{
+		perror("Allocation Error");
+		exit(EXIT_FAILURE);
+	}
 	token = strtok(copy_line, delimi);
 
 	while (token != NULL)
 	{
-	tokens[i] = malloc(sizeof(char) * strlen(token) + 2);
+		tokens[i] = malloc(sizeof(char) * strlen(token) + 1);
+		if (!tokens)
+		{
+			perror("Allocation Error");
+			exit(EXIT_FAILURE);
+		}
 		strcpy(tokens[i], token);
 		i++;
 		token = strtok(NULL, delimi);
 	}
 	tokens[i] = NULL;
-	free(copy_line);
 	return (tokens);
 }
 
