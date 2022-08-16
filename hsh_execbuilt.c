@@ -42,7 +42,6 @@ int execute(char **args)
 	if (my_pid == 0)
 	{
 		execve(args[0], args, envp);
-		free(args);
 		perror("hsh");
 		exit(EXIT_SUCCESS);
 	}
@@ -100,17 +99,17 @@ char *_which(char *command)
 	if (path)
 	{
 		copy_path = strdup(path);
-		command_length = strlen(command);
+		command_length = _strlen(command);
 		path_token = strtok(copy_path, ":");
 		while (path_token != NULL)
 		{
-			directory_length = strlen(path_token);
+			directory_length = _strlen(path_token);
 /* add 2 for the slash and null character to be added to the path */
 			dir = malloc(directory_length + command_length + 2);
 			strcpy(dir, path_token);
-			strcat(dir, "/");
-			strcat(dir, command);
-			strcat(dir, "\0");
+			_strcat(dir, "/");
+			_strcat(dir, command);
+			_strcat(dir, "\0");
 /* check to see if the file that the path gotten points to actually exists */
 			if (stat(dir, &testfile) == 0)
 			{
