@@ -25,7 +25,7 @@ struct builtin {
 int main(void);
 char *read_line(ssize_t *line);
 int execute(char **args);
-char** token_generate(char *line_read, ssize_t num);
+void token_generate(char **tokens, char *line, char *delim);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
