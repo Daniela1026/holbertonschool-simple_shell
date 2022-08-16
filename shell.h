@@ -23,15 +23,17 @@ struct builtin {
 };
 
 int main(void);
-char *read_line(ssize_t *line);
+char *read_line(char *line);
 int execute(char **args);
 void token_generate(char **tokens, char *line, char *delim);
 char *_which(char *command);
 
+/* string functions */
 int _strlen(char *str);
-char *_strdup(char *str);
-char *_strcpy(char *dest, const char *src);
+char *_strdup(const char *str);
+char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
+int _strcmp(char *dest, char *src);
 
 void builtin_cmd(char **args);
 void h_exit(char **args);
