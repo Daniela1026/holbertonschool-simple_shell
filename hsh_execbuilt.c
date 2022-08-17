@@ -101,7 +101,7 @@ char *_which(char *command)
 {
 	char *path = getenv("PATH"), *copy_path = NULL;
 	char *path_token = NULL, *dir = NULL;
-	int command_len = 0, directory_len = 0;
+	int command_len = _strlen(command), directory_len = 0;
 	struct stat testfile;
 
 	if (command[0] == '/' || command[0] == '.')
@@ -110,10 +110,9 @@ char *_which(char *command)
 			return (command);
 	}
 
-	if (path)	
+	if (path)
 	{
 		copy_path = _strdup(path);
-		command_len = _strlen(command);
 		path_token = strtok(copy_path, ":");
 		while (path_token != NULL)
 		{

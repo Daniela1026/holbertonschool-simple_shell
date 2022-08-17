@@ -4,7 +4,7 @@
  *builtin_cmd - We get the commands
  *@args: Character Pointer
  *
- *return: args
+ *Return: args
  */
 
 int builtin_cmd(char **args)
