@@ -25,26 +25,26 @@ char *read_line(char *line)
 
 /**
  *token_generate - generete token
- *@tokens: tokens of the line
+ *@args: args of the line
  *@line: argumens of the line
  *@delim: delimiters
  *
  *Return: void
  */
-void token_generate(char **tokens, char *line, char *delim)
+void token_generate(char **args, char *line, char *delim)
 {
 	ssize_t i = 0;
-	char *token = NULL;
+	char *arg = NULL;
 
-	token = strtok(line, delim);
-	while (token != NULL)
+	arg = strtok(line, delim);
+	while (arg != NULL)
 	{
-		tokens[i] = token;
+		args[i] = arg;
 		i++;
-		token = strtok(NULL, delim);
+		arg = strtok(NULL, delim);
 	}
 
-	tokens[i] = NULL;
+	args[i] = NULL;
 }
 
 /**
@@ -65,7 +65,7 @@ int execute(char **args)
 	if (builtin_cmd(args) == EXIT_SUCCESS)
 		return (EXIT_SUCCESS);
 
-	args[0] = _which(args[0]);
+	args[0] = cmd(args[0]);
 	if (!args[0])
 		return (EXIT_FAILURE);
 
@@ -95,11 +95,11 @@ int execute(char **args)
  *
  *Return: NULL
  */
-char *_which(char *command)
+char *cmd(char *command)
 {
 	char *path = getenv("PATH"), *copy_path = NULL;
-	char *path_token = NULL, *dir = NULL;
-	int command_len = _strlen(command), directory_len = 0;
+	char *path_args = NULL, *dir = NULL;
+	int command_len = _strlen(command), dir_len = 0;
 	struct stat testfile;
 
 	if (stat(command, &testfile) == 0)
@@ -110,15 +110,15 @@ char *_which(char *command)
 		copy_path = _strdup(path);
 		if (!copy_path)
 			return (NULL);
-		
-		path_token = strtok(copy_path, ":");
-		while (path_token != NULL)
+
+		path_args = strtok(copy_path, ":");
+		while (path_args != NULL)
 		{
-			directory_len = _strlen(path_token) + command_len + 1;
-			dir = malloc(sizeof(char) * directory_len + 1);
+			dir_len = _strlen(path_args) + command_len + 1;
+			dir = malloc(sizeof(char) * dir_len + 1);
 			if (!dir)
 				return (NULL);
-			_strcpy(dir, path_token);
+			_strcpy(dir, path_args);
 			_strcat(dir, "/");
 			_strcat(dir, command);
 			_strcat(dir, "\0");
@@ -128,7 +128,7 @@ char *_which(char *command)
 				return (dir);
 			}
 			free(dir);
-			path_token = strtok(NULL, ":");
+			path_args = strtok(NULL, ":");
 		}
 		free(copy_path);
 		return (NULL);
