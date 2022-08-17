@@ -36,6 +36,9 @@ int execute(char **args)
 	char **envp = NULL;
 	char *command = NULL;
 
+	if (!args[0])
+		return (8);
+
 	envp = environ;
 
 	builtin_cmd(args);
@@ -77,7 +80,6 @@ void token_generate(char **tokens, char *line, char *delim)
 	char *token = NULL;
 
 	token = strtok(line, delim);
-
 	while (token != NULL)
 	{
 		tokens[i] = token;
@@ -97,7 +99,7 @@ char *_which(char *command)
 {
 	char *path = NULL, *copy_path = NULL;
 	char *path_token = NULL, *dir = NULL;
-	int command_length = 0, directory_length = 0;
+	int command_len = 0, directory_len = 0;
 	struct stat testfile;
 
 	if (command[0] == '/' || command[0] == '.')
@@ -109,12 +111,12 @@ char *_which(char *command)
 	if (path)
 	{
 		copy_path = _strdup(path);
-		command_length = _strlen(command);
+		command_len = _strlen(command);
 		path_token = strtok(copy_path, ":");
 		while (path_token != NULL)
 		{
-			directory_length = _strlen(path_token);
-			dir = malloc(directory_length + command_length + 2);
+			directory_len = _strlen(path_token);
+			dir = malloc(directory_len + command_len + 2);
 			_strcpy(dir, path_token);
 			_strcat(dir, "/");
 			_strcat(dir, command);
@@ -127,11 +129,11 @@ char *_which(char *command)
 			path_token = strtok(NULL, ":");
 			free(dir);
 		}
-		free(copy_path);
 		if (stat(command, &testfile) == 0)
 			return (command);
 		return (NULL);
 		free(path_token);
 	}
+	free(copy_path);
 	return (NULL);
 }

@@ -8,7 +8,8 @@
 int main(void)
 {
 	char *line = NULL;
-	char *tokens[1024];
+/*	char copy_line[BUFSIZ];*/
+	char *tokens[BUFSIZ];
 	char *delim = " \n\t";
 
 	while (true)
@@ -16,15 +17,18 @@ int main(void)
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 
-		line = read_line(line);
-		if (_strcmp(line, "exit\n") == 0)
+		line = read_line(NULL);
+		if (_strcmp(line, "exit") == 0)
 		{
 			free(line);
 			exit(EXIT_SUCCESS);
 		}
-
 		token_generate(tokens, line, delim);
-		execute(tokens);
+		if (execute(tokens) == 8)
+		{
+			free(line);
+			continue;
+		}
 		free(line);
 	}
 	return (EXIT_SUCCESS);
