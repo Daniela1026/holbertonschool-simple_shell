@@ -57,32 +57,30 @@ int execute(char **args)
 {
 	pid_t my_pid;
 	int status = 0;
-	char **envp = NULL;
-	char *command = NULL;
 
 	if (!args[0])
 		return (ARG_ONLY_SPACE);
 
-	envp = environ;
 
 	if (builtin_cmd(args) == EXIT_SUCCESS)
 		return (EXIT_SUCCESS);
 
-	command = _which(args[0]);
-	if (command == NULL)
+	args[0] = _which(args[0]);
+	if (!args[0])
 		return (EXIT_FAILURE);
 
 	my_pid = fork();
 
 	if (my_pid == 0)
 	{
-		execve(args[0], args, envp);
+		execve(args[0], args, environ);
 		exit(EXIT_SUCCESS);
 	}
 	else if (my_pid > 0)
 	{
 		do {waitpid(my_pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		free(args[0]);
 	}
 
 	else
@@ -104,15 +102,15 @@ char *_which(char *command)
 	int command_len = _strlen(command), directory_len = 0;
 	struct stat testfile;
 
-	if (command[0] == '/' || command[0] == '.')
-	{
-		if (stat(command, &testfile) == 0)
-			return (command);
-	}
+	if (stat(command, &testfile) == 0)
+		return (command);
 
 	if (path)
 	{
 		copy_path = _strdup(path);
+		if (!copy_path)
+			return (NULL);
+		
 		path_token = strtok(copy_path, ":");
 		while (path_token != NULL)
 		{
@@ -129,14 +127,11 @@ char *_which(char *command)
 				free(copy_path);
 				return (dir);
 			}
-			path_token = strtok(NULL, ":");
 			free(dir);
+			path_token = strtok(NULL, ":");
 		}
-		if (stat(command, &testfile) == 0)
-			return (command);
+		free(copy_path);
 		return (NULL);
-		free(path_token);
 	}
-	free(copy_path);
 	return (NULL);
 }
