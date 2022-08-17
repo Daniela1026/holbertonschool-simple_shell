@@ -65,11 +65,12 @@ int execute(char **args)
 
 	envp = environ;
 
-	builtin_cmd(args);
+	if (builtin_cmd(args) == EXIT_SUCCESS)
+		return (EXIT_SUCCESS);
 
 	command = _which(args[0]);
 	if (command == NULL)
-		return (-1);
+		return (EXIT_FAILURE);
 
 	my_pid = fork();
 
@@ -87,7 +88,7 @@ int execute(char **args)
 	else
 		perror("hsh");
 
-	return (EXIT_SUCCESS);
+	return (status);
 }
 
 /**

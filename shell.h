@@ -36,7 +36,7 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *dest, char *src);
 
-void builtin_cmd(char **args);
+int builtin_cmd(char **args);
 void h_exit(char **args);
 void h_cd(char **args);
 void h_help(char **args);
