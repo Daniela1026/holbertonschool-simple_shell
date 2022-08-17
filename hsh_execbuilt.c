@@ -1,11 +1,10 @@
 #include "shell.h"
 
 /**
+ *read_line - use getline
+ *@line: argumens of the line
  *
- *
- *
- *
- *
+ *Return: getline
  */
 char *read_line(char *line)
 {
@@ -25,9 +24,10 @@ char *read_line(char *line)
 }
 
 /**
+ *execute - execute new process
+ *@args: argumens input
  *
- *
- *
+ *Return: EXIT_SUCCESS
  */
 int execute(char **args)
 {
@@ -64,9 +64,12 @@ int execute(char **args)
 }
 
 /**
+ *token_generate - generete token
+ *@tokens: tokens of the line
+ *@line: argumens of the line
+ *@delim: delimiters
  *
- *
- *
+ *Return: void
  */
 void token_generate(char **tokens, char *line, char *delim)
 {
@@ -85,8 +88,10 @@ void token_generate(char **tokens, char *line, char *delim)
 }
 
 /**
+ *_which - parse command
+ *@command: input command
  *
- *
+ *Return: NULL
  */
 char *_which(char *command)
 {
@@ -119,8 +124,8 @@ char *_which(char *command)
 				free(copy_path);
 				return (dir);
 			}
-			free(dir);
 			path_token = strtok(NULL, ":");
+			free(dir);
 		}
 		free(copy_path);
 		if (stat(command, &testfile) == 0)
