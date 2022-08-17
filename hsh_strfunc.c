@@ -2,7 +2,7 @@
 
 /**
  *_strlen - length of the string
- *@string: sring
+ *@str: string
  *
  *Return: length of the string
  */
@@ -80,11 +80,11 @@ char *_strdup(const char *str)
 	ret = malloc(sizeof(char) * (len + 1));
 	if (!ret)
 		return (NULL);
-	
+
 	for (len++; len--;)
 		ret[len] = *--str;
 
-	return(ret);
+	return (ret);
 }
 
 /**

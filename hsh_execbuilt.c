@@ -15,12 +15,36 @@ char *read_line(char *line)
 	{
 		free(line);
 		exit(EXIT_SUCCESS);
-	
+
 	}
 	size = _strlen(line);
 	line[size - 1] = '\0';
 
 	return (line);
+}
+
+/**
+ *token_generate - generete token
+ *@tokens: tokens of the line
+ *@line: argumens of the line
+ *@delim: delimiters
+ *
+ *Return: void
+ */
+void token_generate(char **tokens, char *line, char *delim)
+{
+	ssize_t i = 0;
+	char *token = NULL;
+
+	token = strtok(line, delim);
+	while (token != NULL)
+	{
+		tokens[i] = token;
+		i++;
+		token = strtok(NULL, delim);
+	}
+
+	tokens[i] = NULL;
 }
 
 /**
@@ -64,29 +88,6 @@ int execute(char **args)
 		perror("hsh");
 
 	return (EXIT_SUCCESS);
-}
-
-/**
- *token_generate - generete token
- *@tokens: tokens of the line
- *@line: argumens of the line
- *@delim: delimiters
- *
- *Return: void
- */
-void token_generate(char **tokens, char *line, char *delim)
-{
-	ssize_t i = 0;
-	char *token = NULL;
-
-	token = strtok(line, delim);
-	while (token != NULL)
-	{
-		tokens[i] = token;
-		i++;
-		token = strtok(NULL, delim);
-	}
-	tokens[i] = NULL;
 }
 
 /**

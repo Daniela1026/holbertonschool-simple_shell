@@ -1,19 +1,18 @@
 #include "shell.h"
 
 /**
-* builtin_cmd - We get the commands
-* struct builtin - struct
-* @args:  Character Pointer
-*
-* return: args
-*/
+ *builtin_cmd - We get the commands
+ *@args: Character Pointer
+ *
+ *return: args
+ */
 
 void builtin_cmd(char **args)
 {
 	int num = 0;
 	int i;
 
-	struct builtin builtins[] = {
+	builtin builtins[] = {
 		{"exit", h_exit},
 		{"cd", h_cd},
 		{"help", h_help},
@@ -32,9 +31,9 @@ void builtin_cmd(char **args)
 }
 
 /**
-* h_exit - Commands the builtin
-* @args: Character Pointer
-*/
+ *h_exit - Commands the builtin
+ *@args: Character Pointer
+ */
 
 void h_exit(char **args)
 {
@@ -43,9 +42,9 @@ void h_exit(char **args)
 }
 
 /**
-* h_cd - Commands the builtin
-* @args: Character Pointer
-*/
+ *h_cd - Commands the builtin
+ *@args: Character Pointer
+ */
 
 void h_cd(char **args)
 {
@@ -63,9 +62,9 @@ void h_cd(char **args)
 }
 
 /**
-* h_help - Commands the builtin
-* @args: Character Pointer
-*/
+ *h_help - Commands the builtin
+ *@args: Character Pointer
+ */
 
 void h_help(char **args)
 {
@@ -80,16 +79,17 @@ void h_help(char **args)
 }
 
 /**
-* h_env - Commands the builtin
-* @args: Character Pointer
-*/
+ *h_env - Commands the builtin
+ *@args: aguments
+ */
 
 void h_env(char **args)
 {
 	char **env = environ;
+	int i = 0;
 
-	while (*env)
-		printf("%s\n", *env++);
+	while (env[i])
+		printf("%s\n", env[i]), i++;
 
-	(void)args;
+	(void) args;
 }
