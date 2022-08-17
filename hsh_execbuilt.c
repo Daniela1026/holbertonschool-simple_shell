@@ -1,26 +1,33 @@
 #include "shell.h"
 
 /**
+ *read_line - use getline
+ *@line: argumens of the line
  *
- *
- *
- *
- *
+ *Return: getline
  */
-char *read_line(ssize_t *line)
+char *read_line(char *line)
 {
-	char *buffer = NULL;
+	int size = 0;
 	size_t buflen = 0;
 
-	*line = getline(&buffer, &buflen, stdin);
+	if (getline(&line, &buflen, stdin) == EOF)
+	{
+		free(line);
+		exit(EXIT_SUCCESS);
+	
+	}
+	size = _strlen(line);
+	line[size - 1] = '\0';
 
-	return (buffer);
+	return (line);
 }
 
 /**
+ *execute - execute new process
+ *@args: argumens input
  *
- *
- *
+ *Return: EXIT_SUCCESS
  */
 int execute(char **args)
 {
@@ -42,8 +49,6 @@ int execute(char **args)
 	if (my_pid == 0)
 	{
 		execve(args[0], args, envp);
-		free(args);
-		perror("hsh");
 		exit(EXIT_SUCCESS);
 	}
 	else if (my_pid > 0)
@@ -59,9 +64,12 @@ int execute(char **args)
 }
 
 /**
+ *token_generate - generete token
+ *@tokens: tokens of the line
+ *@line: argumens of the line
+ *@delim: delimiters
  *
- *
- *
+ *Return: void
  */
 void token_generate(char **tokens, char *line, char *delim)
 {
@@ -80,8 +88,10 @@ void token_generate(char **tokens, char *line, char *delim)
 }
 
 /**
+ *_which - parse command
+ *@command: input command
  *
- *
+ *Return: NULL
  */
 char *_which(char *command)
 {
@@ -90,7 +100,6 @@ char *_which(char *command)
 	int command_length = 0, directory_length = 0;
 	struct stat testfile;
 
-	/* check if the command given is a directory and pass it directly to execve */
 	if (command[0] == '/' || command[0] == '.')
 	{
 		if (stat(command, &testfile) == 0)
@@ -99,31 +108,30 @@ char *_which(char *command)
 	path = getenv("PATH");
 	if (path)
 	{
-		copy_path = strdup(path);
-		command_length = strlen(command);
+		copy_path = _strdup(path);
+		command_length = _strlen(command);
 		path_token = strtok(copy_path, ":");
 		while (path_token != NULL)
 		{
-			directory_length = strlen(path_token);
-/* add 2 for the slash and null character to be added to the path */
+			directory_length = _strlen(path_token);
 			dir = malloc(directory_length + command_length + 2);
-			strcpy(dir, path_token);
-			strcat(dir, "/");
-			strcat(dir, command);
-			strcat(dir, "\0");
-/* check to see if the file that the path gotten points to actually exists */
+			_strcpy(dir, path_token);
+			_strcat(dir, "/");
+			_strcat(dir, command);
+			_strcat(dir, "\0");
 			if (stat(dir, &testfile) == 0)
 			{
 				free(copy_path);
 				return (dir);
 			}
-			free(dir);
 			path_token = strtok(NULL, ":");
+			free(dir);
 		}
 		free(copy_path);
 		if (stat(command, &testfile) == 0)
 			return (command);
 		return (NULL);
+		free(path_token);
 	}
 	return (NULL);
 }

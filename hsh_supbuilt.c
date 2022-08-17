@@ -4,6 +4,7 @@
 * builtin_cmd - We get the commands
 * struct builtin - struct
 * @args:  Character Pointer
+*
 * return: args
 */
 
@@ -22,7 +23,7 @@ void builtin_cmd(char **args)
 
 	for (i = 0; i < num; i++)
 	{
-		if (strcmp(args[0], builtins[i].name) == 0)
+		if (_strcmp(args[0], builtins[i].name) == 0)
 		{
 			builtins[i].func(args);
 			return;
