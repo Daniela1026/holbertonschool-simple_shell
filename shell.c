@@ -8,7 +8,7 @@
 int main(void)
 {
 	char *line = NULL;
-/*	char copy_line[BUFSIZ];*/
+	int ex_status = 0;
 	char *tokens[BUFSIZ];
 	char *delim = " \n\t";
 
@@ -21,15 +21,15 @@ int main(void)
 		if (_strcmp(line, "exit") == 0)
 		{
 			free(line);
-			exit(EXIT_SUCCESS);
+			exit(WEXITSTATUS(ex_status));
 		}
 		token_generate(tokens, line, delim);
-		if (execute(tokens) == ARG_ONLY_SPACE)
+		ex_status = execute(tokens);
+		if (ex_status == ARG_ONLY_SPACE)
 		{
 			free(line);
 			continue;
 		}
 		free(line);
 	}
-	return (EXIT_SUCCESS);
 }
