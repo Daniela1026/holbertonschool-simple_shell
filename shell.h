@@ -10,10 +10,11 @@
 #include <signal.h>
 #include <string.h>
 #include <fcntl.h>
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+
+#define ARG_ONLY_SPACE 8
 
 extern char **environ;
 

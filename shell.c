@@ -24,7 +24,7 @@ int main(void)
 			exit(EXIT_SUCCESS);
 		}
 		token_generate(tokens, line, delim);
-		if (execute(tokens) == 8)
+		if (execute(tokens) == ARG_ONLY_SPACE)
 		{
 			free(line);
 			continue;
