@@ -23,6 +23,7 @@ int main(void)
 			free(line);
 			exit(WEXITSTATUS(ex_status));
 		}
+
 		token_generate(tokens, line, delim);
 		ex_status = execute(tokens);
 		if (ex_status == ARG_ONLY_SPACE)

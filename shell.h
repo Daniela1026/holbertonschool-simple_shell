@@ -41,6 +41,7 @@ void h_exit(char **args);
 void h_cd(char **args);
 void h_help(char **args);
 void h_env(char **args);
+int hsh_num(void);
 
 
 #endif /* _SHELL_H_ */
