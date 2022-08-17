@@ -99,7 +99,7 @@ int execute(char **args)
  */
 char *_which(char *command)
 {
-	char *path = NULL, *copy_path = NULL;
+	char *path = getenv("PATH"), *copy_path = NULL;
 	char *path_token = NULL, *dir = NULL;
 	int command_len = 0, directory_len = 0;
 	struct stat testfile;
@@ -109,16 +109,18 @@ char *_which(char *command)
 		if (stat(command, &testfile) == 0)
 			return (command);
 	}
-	path = getenv("PATH");
-	if (path)
+
+	if (path)	
 	{
 		copy_path = _strdup(path);
 		command_len = _strlen(command);
 		path_token = strtok(copy_path, ":");
 		while (path_token != NULL)
 		{
-			directory_len = _strlen(path_token);
-			dir = malloc(directory_len + command_len + 2);
+			directory_len = _strlen(path_token) + command_len + 1;
+			dir = malloc(sizeof(char) * directory_len + 1);
+			if (!dir)
+				return (NULL);
 			_strcpy(dir, path_token);
 			_strcat(dir, "/");
 			_strcat(dir, command);
