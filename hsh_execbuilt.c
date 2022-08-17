@@ -37,7 +37,7 @@ int execute(char **args)
 	char *command = NULL;
 
 	if (!args[0])
-		return (8);
+		return (ARG_ONLY_SPACE);
 
 	envp = environ;
 
