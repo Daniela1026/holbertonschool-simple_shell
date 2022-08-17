@@ -7,7 +7,7 @@
  *return: args
  */
 
-void builtin_cmd(char **args)
+int builtin_cmd(char **args)
 {
 	int num = 0;
 	int i;
@@ -25,9 +25,10 @@ void builtin_cmd(char **args)
 		if (_strcmp(args[0], builtins[i].name) == 0)
 		{
 			builtins[i].func(args);
-			return;
+			return (EXIT_SUCCESS);
 		}
 	}
+	return (EXIT_FAILURE);
 }
 
 /**
@@ -35,9 +36,8 @@ void builtin_cmd(char **args)
  *@args: Character Pointer
  */
 
-void h_exit(char **args)
+void h_exit(char **args __attribute__((unused)))
 {
-	(void)args;
 	exit(0);
 }
 
@@ -66,7 +66,7 @@ void h_cd(char **args)
  *@args: Character Pointer
  */
 
-void h_help(char **args)
+void h_help(char **args __attribute__((unused)))
 {
 	char *helptext =
 		"The following commands are available:\n"
@@ -74,8 +74,6 @@ void h_help(char **args)
 		"  exit     Exit the shell.\n"
 		"  help     Print this help text.\n";
 	printf("%s", helptext);
-
-	(void)args;
 }
 
 /**
@@ -83,13 +81,11 @@ void h_help(char **args)
  *@args: aguments
  */
 
-void h_env(char **args)
+void h_env(char **args __attribute__((unused)))
 {
 	char **env = environ;
 	int i = 0;
 
 	while (env[i])
 		printf("%s\n", env[i]), i++;
-
-	(void) args;
 }
