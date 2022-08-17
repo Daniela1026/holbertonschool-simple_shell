@@ -18,10 +18,10 @@
 
 extern char **environ;
 
-struct builtin {
+typedef struct builtin {
     char *name;
     void (*func)(char **args);
-};
+} builtin;
 
 int main(void);
 char *read_line(char *line);
