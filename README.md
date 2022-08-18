@@ -8,22 +8,22 @@
 * **shell.c** - Main Function
 * **hello.c** - Check the code Betty
 * **hsh_execbuilt.c** - 
-        - **read_line** - Use getline
-        - **token_generate** - Generate token
-        - **execute** - Execute new process
-        - **cmd** - Parse Command 
+* **read_line** - Use getline
+* **token_generate** - Generate token
+* **execute** - Execute new process
+* **cmd** - Parse Command 
 * **hsh_strfunc.c** - Function to get the arguments
-        - **_strlen** - Length of the string
-        - **_strcat** - Concatenates two strings
-        - **_strcpy** - Copies string
-        - **_strdup** - Duplicate one string
-        - **_strcmp** - Comparation string
+* **_strlen** - Length of the string
+* **_strcat** - Concatenates two strings
+* **_strcpy** - Copies string
+* **_strdup** - Duplicate one string
+* **_strcmp** - Comparation string
 * **hsh_supbuilt.c** - Command required for builtin
-        - **builtin_cmd** - We get the commands
-        - **h_exit** - Commands the builtin
-        - **h_cd** - Commands the builtin
-        - **h_help** - Commands the builtin
-        - **h_env** - Commands the builtin
+* **builtin_cmd** - We get the commands
+* **h_exit** - Commands the builtin
+* **h_cd** - Commands the builtin
+* **h_help** - Commands the builtin
+* **h_env** - Commands the builtin
 
 ## Usage Simple Shell ⚙️
 
@@ -57,7 +57,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 ## Authors ✒️
 
-* **Daniela Cartagena** - [Daniela](https://github.com/Daniela1026)
-* **Johanna Balcazar** - [Johanna](https://github.com/LiJoBaZar)
-* **Luiyi Hurtado** - [Luiyi](https://github.com/Luiyi-F)
+* 👩🏻‍💻**Daniela Cartagena** - [Daniela](https://github.com/Daniela1026)
+* 👩🏻‍💻**Johanna Balcazar** - [Johanna](https://github.com/LiJoBaZar)
+* 👨🏻‍💻**Luiyi Hurtado** - [Luiyi](https://github.com/Luiyi-F)
 
