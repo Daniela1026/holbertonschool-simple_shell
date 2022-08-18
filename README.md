@@ -1,4 +1,4 @@
-### Simple Shell Project
+# Simple Shell Project
 
 ## Files Description Shell 📋
 
@@ -24,4 +24,29 @@
         * **h_cd** - Commands the builtin
         * **h_help** - Commands the builtin
         * **h_env** - Commands the builtin
+
+## Usage Simple Shell
+
+* **Step 1:** Clone our repository using this command
+```
+git clone https://github.com/Daniela1026/holbertonschool-simple_shell.git
+```
+* **Step 2:** Change directory to holbertonschool-simple_shell
+```
+cd holbertonschool-simple_shell
+```
+* **Step 3:** Compile the C files in this way
+```
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+```
+* **Step 4:** Run the shell
+```
+./hsh
+```
+* **Step 5:** Run the shell
+```
+./hsh
+```
+* **Step 6:** Example interactive mode with /bin/ls, ls, ls -la
+* **Step 7:** Example non-interactive mode with echo "/bin/ls" | ./hsh, echo "ls" | ./hsh, echo "ls -la" | ./hsh
 
