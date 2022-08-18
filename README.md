@@ -50,7 +50,6 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 ./hsh
 ```
-* **Step 5:** Run the shell
 ```
 ./hsh
 ```
