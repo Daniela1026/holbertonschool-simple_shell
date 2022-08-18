@@ -114,6 +114,10 @@ dev@DESKTOP:~$
 * All your header files should be include guarded
 * Use system calls only when you need to [why?](https://www.quora.com/Why-are-system-calls-expensive-in-operating-systems)
 
+<h1 align="center">Flowchart :art:</h1>
+
+![Algorithm schema](./images/Flowchart.jpeg)
+
 <h1 align="center">Authors ✒️</h1>
 
 * 👩🏻‍💻**Daniela Cartagena** - [Daniela](https://github.com/Daniela1026)
