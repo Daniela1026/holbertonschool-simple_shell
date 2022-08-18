@@ -25,7 +25,7 @@
         * **h_help** - Commands the builtin
         * **h_env** - Commands the builtin
 
-## Usage Simple Shell
+## Usage Simple Shell ⚙️
 
 * **Step 1:** Clone our repository using this command
 ```
@@ -48,5 +48,6 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ./hsh
 ```
 * **Step 6:** Example interactive mode with /bin/ls, ls, ls -la
+![Algorithm schema](./images/Interactive_Mode.jpg)
 * **Step 7:** Example non-interactive mode with echo "/bin/ls" | ./hsh, echo "ls" | ./hsh, echo "ls -la" | ./hsh
-
+![Algorithm schema](./images/Non_Interactive.jpg)
