@@ -50,11 +50,31 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 ./hsh
 ```
-* **Step 6:** Example interactive mode with **/bin/ls**, **ls**, **ls -la**
+* **Step 5:** Example interactive mode with **/bin/ls**, **ls**, **ls -la**
+```
+$ /bin/ls
+AUTHORS  README.md  hello.c  hsh  hsh_execbuilt.c  hsh_strfunc.c  hsh_supbuilt.c  man_1_simple_shell  shell.c  shell.h
 
-![Algorithm schema](./images/Interactive_Mode.jpg)
+$ ls
+AUTHORS  README.md  hello.c  hsh  hsh_execbuilt.c  hsh_strfunc.c  hsh_supbuilt.c  man_1_simple_shell  shell.c  shell.h
 
-* **Step 7:** Example non-interactive mode with **echo "/bin/ls" | ./hsh**, **echo "ls" | ./hsh**, **echo "ls -la" | ./hsh**
+$ ls -la
+total 49
+drwxr-xr-x 1 luiyi_fhb luiyi_fhb   512 Aug 18 12:32 .
+drwxr-xr-x 1 luiyi_fhb luiyi_fhb   512 Aug 17 22:39 ..
+drwxr-xr-x 1 luiyi_fhb luiyi_fhb   512 Aug 17 22:38 .git
+-rw-r--r-- 1 luiyi_fhb luiyi_fhb   165 Aug 17 22:38 AUTHORS
+-rw-r--r-- 1 luiyi_fhb luiyi_fhb    16 Aug 17 22:38 README.md
+-rw-r--r-- 1 luiyi_fhb luiyi_fhb   132 Aug 17 22:38 hello.c
+-rwxr-xr-x 1 luiyi_fhb luiyi_fhb 18264 Aug 18 11:05 hsh
+-rw-r--r-- 1 luiyi_fhb luiyi_fhb  2250 Aug 18 11:05 hsh_execbuilt.c
+-rw-r--r-- 1 luiyi_fhb luiyi_fhb  1458 Aug 17 22:38 hsh_strfunc.c
+-rw-r--r-- 1 luiyi_fhb luiyi_fhb  1380 Aug 17 22:38 hsh_supbuilt.c
+-rw-r--r-- 1 luiyi_fhb luiyi_fhb     0 Aug 17 22:38 man_1_simple_shell
+-rwxr-xr-x 1 luiyi_fhb luiyi_fhb   532 Aug 18 12:32 shell.c
+-rw-r--r-- 1 luiyi_fhb luiyi_fhb   923 Aug 17 22:38 shell.h
+```
+* **Step 6:** Example non-interactive mode with **echo "/bin/ls" | ./hsh**, **echo "ls" | ./hsh**, **echo "ls -la" | ./hsh**
 
 ![Algorithm schema](./images/Non_Interactive.jpg)
 
