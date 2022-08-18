@@ -111,7 +111,7 @@ dev@DESKTOP:~$
 * The code use the `Betty` style. It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
 * Your shell should not have any memory leaks 
 * No more than 5 functions per file
-* All your header files should be include guarded
+* All your header files should be include guarded.
 * Use system calls only when you need to [why?](https://www.quora.com/Why-are-system-calls-expensive-in-operating-systems)
 
 <h1 align="center">Flowchart :art:</h1>
