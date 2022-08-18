@@ -1,4 +1,4 @@
-# Simple Shell Project
+# Simple Shell Project 🤓
 
 ## Files Description Shell 📋
 
@@ -55,4 +55,9 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 ![Algorithm schema](./images/Non_Interactive.jpg)
 
+## Authors ✒️
+
+* **Daniela Cartagena** - [Daniela](https://github.com/Daniela1026)
+* **Johanna Balcazar** - [Johanna](https://github.com/LiJoBaZar)
+* **Luiyi Hurtado** - [Luiyi](https://github.com/Luiyi-F)
 
