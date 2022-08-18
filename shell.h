@@ -26,8 +26,8 @@ typedef struct builtin {
 int main(void);
 char *read_line(char *line);
 int execute(char **args);
-void token_generate(char **tokens, char *line, char *delim);
-char *_which(char *command);
+void token_generate(char **args, char *line, char *delim);
+char *cmd(char *command);
 
 /* string functions */
 int _strlen(char *str);
@@ -41,7 +41,6 @@ void h_exit(char **args);
 void h_cd(char **args);
 void h_help(char **args);
 void h_env(char **args);
-int hsh_num(void);
 
 
 #endif /* _SHELL_H_ */

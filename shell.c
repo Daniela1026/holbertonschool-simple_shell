@@ -9,7 +9,7 @@ int main(void)
 {
 	char *line = NULL;
 	int ex_status = 0;
-	char *tokens[BUFSIZ];
+	char *args[BUFSIZ];
 	char *delim = " \n\t";
 
 	while (true)
@@ -24,8 +24,8 @@ int main(void)
 			exit(WEXITSTATUS(ex_status));
 		}
 
-		token_generate(tokens, line, delim);
-		ex_status = execute(tokens);
+		token_generate(args, line, delim);
+		ex_status = execute(args);
 		if (ex_status == ARG_ONLY_SPACE)
 		{
 			free(line);
