@@ -1,5 +1,6 @@
 # Simple Shell Project 🤓
 
+## What is a simple shell❔📎
 ## Files Description Shell 📋
 
 * **AUTHORS** - List of contributors to this repository
