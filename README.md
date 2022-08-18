@@ -82,6 +82,8 @@ dev@DESKTOP:~$
 
 dev@DESKTOP:~$ echo 'ls' | ./hsh
 AUTHORS  README.md  hello.c  hsh  hsh_execbuilt.c  hsh_strfunc.c  hsh_supbuilt.c  man_1_simple_shell  shell.c  shell.h
+dev@DESKTOP:~$ 
+
 dev@DESKTOP:~$ echo 'ls -la' | ./hsh
 total 49
 drwxr-xr-x 1 luiyi_fhb luiyi_fhb   512 Aug 18 12:32 .
