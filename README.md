@@ -50,9 +50,6 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 ./hsh
 ```
-```
-./hsh
-```
 * **Step 6:** Example interactive mode with **/bin/ls**, **ls**, **ls -la**
 
 ![Algorithm schema](./images/Interactive_Mode.jpg)
