@@ -1,6 +1,6 @@
 ![Algorithm schema](./images/holberton.jpg)
 
-# Simple Shell Project 🤓
+# Simple Shell Project 🤓🚀
 
 ## What is a simple shell❔📎
 
