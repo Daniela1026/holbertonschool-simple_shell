@@ -78,3 +78,5 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 * 👩🏻‍💻**Johanna Balcazar** - [Johanna](https://github.com/LiJoBaZar)
 * 👨🏻‍💻**Luiyi Hurtado** - [Luiyi](https://github.com/Luiyi-F)
 
+![Algorithm schema](./images/holberton.jpg)
+
