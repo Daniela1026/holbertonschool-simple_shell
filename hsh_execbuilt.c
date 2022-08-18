@@ -55,6 +55,7 @@ void token_generate(char **args, char *line, char *delim)
  */
 int execute(char **args)
 {
+	char *command = NULL;
 	pid_t my_pid;
 	int status = 0;
 
@@ -65,22 +66,23 @@ int execute(char **args)
 	if (builtin_cmd(args) == EXIT_SUCCESS)
 		return (EXIT_SUCCESS);
 
-	args[0] = cmd(args[0]);
-	if (!args[0])
+	command = cmd(args[0]);
+	if (!command)
 		return (EXIT_FAILURE);
 
 	my_pid = fork();
 
 	if (my_pid == 0)
 	{
-		execve(args[0], args, environ);
+		execve(command, args, environ);
 		exit(EXIT_SUCCESS);
 	}
 	else if (my_pid > 0)
 	{
 		do {waitpid(my_pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-		free(args[0]);
+		if (_strcmp(command, args[0]))
+			free(command);
 	}
 
 	else
