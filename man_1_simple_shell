@@ -1,0 +1,96 @@
+.TH man 1 "18 August 2022" "Version 1.0" "SIMPLE_SHELL"
+.SH NAME
+.B Simple Shell
+- command line interpreter
+.SH SYNOPSIS
+
+.sp
+.SH DESCRIPTION
+Simple_Shell is an sh compatible command interpreter, that executes an imput given by the user, if it is valid.
+.sp
+It is recomended  that this program is cqompiled with the following command:
+.B gcc -Wall -Werror -Wextra -pedantic *.c -o simple_shell
+, enter
+.B ./simple_shell
+to execute the Simple_Shell. This program can bu used in two different ways:
+.nf
+-Interactive mode.
+-Non-interactive mode.
+.SS
+.sp
+.SH INVOCATION
+An interactive mode shell is one started without non-option arguments like this './hsh'.
+.sp
+.SH Builtin_cmd
+The simple_shell supports the builtins: /bin/ls, ls, ls -la,env and exit. The function builtin_cmd verifies if the first argument passed by the user is "/bin/ls", "ls", "ls -la", "env" or "exit" and handles them the same way as sh.
+.sp
+.SH EXAMPLES
+.sp
+.B $/bin/ls
+.sp
+$/bin/ls
+.nf
+AUTHORS  hello.c  hsh  hsh_execbuilt.c  hsh_strfunc.c  hsh_supbuilt.c  images  man_1_simple_shell  README.md  shell.c  shell.h
+.sp
+Print all files
+.sp
+.B $ ls -la
+.sp
+$ ls -la
+.nf
+total 60
+drwxr-xr-x 4 root root   212 Aug 18 14:30 .
+drwx------ 1 root root  4096 Aug 18 14:28 ..
+-rw-r--r-- 1 root root   191 Aug 18 13:33 AUTHORS
+drwxr-xr-x 8 root root   201 Aug 18 10:51 .git
+-rw-r--r-- 1 root root   132 Aug 10 17:30 hello.c
+-rwxr-xr-x 1 root root 18264 Aug 18 14:30 hsh
+-rw-r--r-- 1 root root  2250 Aug 17 17:20 hsh_execbuilt.c
+-rw-r--r-- 1 root root  1458 Aug 16 21:30 hsh_strfunc.c
+-rw-r--r-- 1 root root  1380 Aug 17 14:41 hsh_supbuilt.c
+drwxr-xr-x 2 root root    23 Aug 18 10:51 images
+-rw-r--r-- 1 root root  2512 Aug 18 14:28 man_1_simple_shell
+-rw-r--r-- 1 root root    16 Aug  8 09:06 README.md
+-rwxr-xr-x 1 root root   532 Aug 17 17:19 shell.c
+-rw-r--r-- 1 root root   923 Aug 17 17:19 shell.h
+.sp
+will print the files in the current working directory in long format.
+.sp
+.sh
+.B $ exit
+.sp
+Will exit the Simple_Shell.
+.sp
+.B Non-interactive mode:
+.sp
+.B $ echo "/bin/ls" | ./hsh
+.nf
+AUTHORS  hello.c  hsh  hsh_execbuilt.c  hsh_strfunc.c  hsh_supbuilt.c  images  man_1_simple_shell  README.md  shell.c  shell.h
+.sp
+Print all files
+.sp
+.B $ echo "ls -la" | ./hsh
+.nf
+total 60
+drwxr-xr-x 4 root root   212 Aug 18 14:30 .
+drwx------ 1 root root  4096 Aug 18 14:28 ..
+-rw-r--r-- 1 root root   191 Aug 18 13:33 AUTHORS
+drwxr-xr-x 8 root root   201 Aug 18 10:51 .git
+-rw-r--r-- 1 root root   132 Aug 10 17:30 hello.c
+-rwxr-xr-x 1 root root 18264 Aug 18 14:30 hsh
+-rw-r--r-- 1 root root  2250 Aug 17 17:20 hsh_execbuilt.c
+-rw-r--r-- 1 root root  1458 Aug 16 21:30 hsh_strfunc.c
+-rw-r--r-- 1 root root  1380 Aug 17 14:41 hsh_supbuilt.c
+drwxr-xr-x 2 root root    23 Aug 18 10:51 images
+-rw-r--r-- 1 root root  2512 Aug 18 14:28 man_1_simple_shell
+-rw-r--r-- 1 root root    16 Aug  8 09:06 README.md
+-rwxr-xr-x 1 root root   532 Aug 17 17:19 shell.c
+-rw-r--r-- 1 root root   923 Aug 17 17:19 shell.h
+.sp
+will print the files in the current working directory in long format.
+.sp
+.SH BUGS
+Some regular shell builtins are not implemented in Simple_Shell, and trying to execute them
+will end up in unexpected behavior, or error message.
+.SH AUTHORS
+Daniela Cartagena, Johanna Balcazar and Luiyi Hurtado.
