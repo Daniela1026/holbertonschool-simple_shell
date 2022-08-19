@@ -120,9 +120,9 @@ dev@DESKTOP:~$
 
 <h1 align="center">Authors ✒️</h1>
 
-<h1 align="center"> 👩🏻‍💻**Daniela Cartagena** - [Daniela](https://github.com/Daniela1026)
+< align="center"> 👩🏻‍💻**Daniela Cartagena** - [Daniela](https://github.com/Daniela1026)
  👩🏻‍💻**Johanna Balcazar** - [Johanna](https://github.com/LiJoBaZar)
- 👨🏻‍💻**Luiyi Hurtado** - [Luiyi](https://github.com/Luiyi-F)</h1>
+ 👨🏻‍💻**Luiyi Hurtado** - [Luiyi](https://github.com/Luiyi-F)>
 
 
 
