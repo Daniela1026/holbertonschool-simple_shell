@@ -18,9 +18,10 @@
 
 extern char **environ;
 
-typedef struct builtin {
-    char *name;
-    void (*func)(char **args);
+typedef struct builtin
+{
+	char *name;
+	void (*func)(char **args);
 } builtin;
 
 int main(void);
