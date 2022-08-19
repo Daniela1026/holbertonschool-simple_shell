@@ -92,7 +92,7 @@ int execute(char **args)
 }
 
 /**
- *_which - parse command
+ *cmd - parse command
  *@command: input command
  *
  *Return: NULL
