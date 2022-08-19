@@ -120,9 +120,9 @@ dev@DESKTOP:~$
 
 ## Authors ✒️
 
-**👩🏻‍💻	Daniela Cartagena** -	[Daniela](https://github.com/Daniela1026)
-**👩🏻‍💻	Johanna Balcazar** -	[Johanna](https://github.com/LiJoBaZar)
-**👨🏻‍💻	Luiyi Hurtado** -	[Luiyi](https://github.com/Luiyi-F)
+* **👩🏻‍💻	Daniela Cartagena** -	[Daniela](https://github.com/Daniela1026)
+* **👩🏻‍💻	Johanna Balcazar** -	[Johanna](https://github.com/LiJoBaZar)
+* **👨🏻‍💻	Luiyi Hurtado** -	[Luiyi](https://github.com/Luiyi-F)
 
 
 
