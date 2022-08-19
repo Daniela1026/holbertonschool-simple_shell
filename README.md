@@ -1,13 +1,13 @@
 ![Algorithm schema](./images/holberton.jpg)
 
-<h1 align="center">Simple Shell Project 🤓🚀</h1>
+#Simple Shell Project 🤓🚀</h1>
 
 
-<h1 align="center">What is a simple shell❔📎</h1>
+##What is a simple shell❔📎
 
 What is a simple shell. This is a simple implementation of the command line interpreter for the Unix operating system created this time by the holbis.
 
-<h1 align="center">Files Description Shell 📋</h1>
+##Files Description Shell 📋
 
 * **AUTHORS** - List of contributors to this repository
 * **man_1_simple_shell** - Manual page for the simple_shell
@@ -32,7 +32,7 @@ What is a simple shell. This is a simple implementation of the command line inte
     * **h_help** - Commands the builtin
     * **h_env** - Commands the builtin
 
-<h1 align="center">Usage Simple Shell ⚙️</h1>
+##Usage Simple Shell ⚙️
 
 * **Step 1:** Clone our repository using this command
 ```
@@ -101,7 +101,7 @@ drwxr-xr-x 1 luiyi_fhb luiyi_fhb   512 Aug 17 22:38 .git
 -rw-r--r-- 1 luiyi_fhb luiyi_fhb   923 Aug 17 22:38 shell.h
 dev@DESKTOP:~$  
 ```
-<h1 align="center">Requirements 👓</h1>
+##Requirements 👓
 
 * Allowed editors: `vi`, `vim`, `emacs`
 * All files will be compiled on `Ubuntu 14.04 LTS`
@@ -114,15 +114,15 @@ dev@DESKTOP:~$
 * All your header files should be include guarded.
 * Use system calls only when you need to [why?](https://www.quora.com/Why-are-system-calls-expensive-in-operating-systems)
 
-<h1 align="center">Flowchart :art:</h1>
+##Flowchart :art:
 
 ![Algorithm schema](./images/Flowchart.jpeg)
 
-<h1 align="center">Authors ✒️</h1>
+##Authors ✒️
 
-<h3 align="center"> 👩🏻‍💻	Daniela Cartagena	-	[Daniela](https://github.com/Daniela1026)</h3>
-<h3 align="center"> 👩🏻‍💻	Johanna Balcazar	-	[Johanna](https://github.com/LiJoBaZar)</h3>
-<h3 align="center"> 👨🏻‍💻	Luiyi Hurtado** -	[Luiyi](https://github.com/Luiyi-F)></h3>
+👩🏻‍💻	Daniela Cartagena	-	[Daniela](https://github.com/Daniela1026)
+👩🏻‍💻	Johanna Balcazar	-	[Johanna](https://github.com/LiJoBaZar)
+👨🏻‍💻	Luiyi Hurtado** -	[Luiyi](https://github.com/Luiyi-F)
 
 
 
