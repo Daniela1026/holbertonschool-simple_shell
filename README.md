@@ -118,11 +118,11 @@ dev@DESKTOP:~$
 
 ![Algorithm schema](./images/Flowchart.jpeg)
 
-<h1 align="center">Authors ✒️</h1>
-
-<p align="left">
+<p align="center">
    <img src="https://img.shields.io/badge/STATUS-EN%99DESAROLLO-green">
    </p>
+
+<h1 align="center">Authors ✒️</h1>
 
 <h3 align="center">👩🏻‍💻**Daniela Cartagena** - [Daniela](https://github.com/Daniela1026)</h3>
 <h3 align="center">👩🏻‍💻**Johanna Balcazar** - [Johanna](https://github.com/LiJoBaZar)</h3>
