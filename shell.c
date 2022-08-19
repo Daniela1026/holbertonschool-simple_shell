@@ -11,12 +11,12 @@ int main(void)
 	int ex_status = 0;
 	char *args[BUFSIZ];
 	char *delim = " \n\t";
-	
+
 	while (true)
 	{
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
-		
+
 		line = read_line(NULL);
 		if (_strcmp(line, "exit") == 0)
 		{
