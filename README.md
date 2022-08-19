@@ -106,11 +106,11 @@ dev@DESKTOP:~$
 * Allowed editors: `vi`, `vim`, `emacs`
 * All files will be compiled on `Ubuntu 14.04 LTS`
 * Programs and functions will be compiled with `gcc 4.8.4` using the flats `-Wall` `-Werror` `-Wextra` `-pedantic` `-std=gnu89`
-* The files will end with a new line
-* A `README.md` file, at the root of the folder of the project is mandatory
+* The files will end with a new line.
+* A `README.md` file, at the root of the folder of the project is mandatory.
 * The code use the `Betty` style. It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
-* Your shell should not have any memory leaks 
-* No more than 5 functions per file
+* Your shell should not have any memory leaks. 
+* No more than 5 functions per file.
 * All your header files should be include guarded.
 * Use system calls only when you need to [why?](https://www.quora.com/Why-are-system-calls-expensive-in-operating-systems)
 
