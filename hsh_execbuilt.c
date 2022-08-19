@@ -78,7 +78,7 @@ int execute(char **args)
 	}
 	else if (my_pid > 0)
 	{
-		do {waitpid(my_pid, &status, WUNTRACED)
+		do {waitpid(my_pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 		if (_strcmp(command, args[0]))
 			free(command);
@@ -132,4 +132,4 @@ char *cmd(char *command)
 		return (NULL);
 	}
 	return (NULL);
-}	
+}

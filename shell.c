@@ -32,4 +32,4 @@ int main(void)
 		}
 		free(line);
 	}
-}                                    
+}
