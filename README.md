@@ -121,12 +121,12 @@ dev@DESKTOP:~$
 <h1 align="center">Authors ✒️</h1>
 
 <p align="left">
-   <img src="https://img.shields.io/badge/STATUS-EN%100DESAROLLO-green">
+   <img src="https://img.shields.io/badge/STATUS-EN%99DESAROLLO-green">
    </p>
 
-* 👩🏻‍💻**Daniela Cartagena** - [Daniela](https://github.com/Daniela1026)
-* 👩🏻‍💻**Johanna Balcazar** - [Johanna](https://github.com/LiJoBaZar)
-* 👨🏻‍💻**Luiyi Hurtado** - [Luiyi](https://github.com/Luiyi-F)
+<h3 align="center">👩🏻‍💻**Daniela Cartagena** - [Daniela](https://github.com/Daniela1026)</h3>
+<h3 align="center">👩🏻‍💻**Johanna Balcazar** - [Johanna](https://github.com/LiJoBaZar)</h3>
+<h3 align="center">👨🏻‍💻**Luiyi Hurtado** - [Luiyi](https://github.com/Luiyi-F)</h3>
 
 
 
