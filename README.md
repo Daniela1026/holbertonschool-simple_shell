@@ -1,13 +1,13 @@
 ![Algorithm schema](./images/holberton.jpg)
 
-#Simple Shell Project 🤓🚀</h1>
+# Simple Shell Project 🤓🚀</h1>
 
 
-##What is a simple shell❔📎
+## What is a simple shell❔📎
 
 What is a simple shell. This is a simple implementation of the command line interpreter for the Unix operating system created this time by the holbis.
 
-##Files Description Shell 📋
+## Files Description Shell 📋
 
 * **AUTHORS** - List of contributors to this repository
 * **man_1_simple_shell** - Manual page for the simple_shell
@@ -32,7 +32,7 @@ What is a simple shell. This is a simple implementation of the command line inte
     * **h_help** - Commands the builtin
     * **h_env** - Commands the builtin
 
-##Usage Simple Shell ⚙️
+## Usage Simple Shell ⚙️
 
 * **Step 1:** Clone our repository using this command
 ```
@@ -101,7 +101,7 @@ drwxr-xr-x 1 luiyi_fhb luiyi_fhb   512 Aug 17 22:38 .git
 -rw-r--r-- 1 luiyi_fhb luiyi_fhb   923 Aug 17 22:38 shell.h
 dev@DESKTOP:~$  
 ```
-##Requirements 👓
+## Requirements 👓
 
 * Allowed editors: `vi`, `vim`, `emacs`
 * All files will be compiled on `Ubuntu 14.04 LTS`
@@ -114,15 +114,15 @@ dev@DESKTOP:~$
 * All your header files should be include guarded.
 * Use system calls only when you need to [why?](https://www.quora.com/Why-are-system-calls-expensive-in-operating-systems)
 
-##Flowchart :art:
+## Flowchart :art:
 
 ![Algorithm schema](./images/Flowchart.jpeg)
 
-##Authors ✒️
+## Authors ✒️
 
-👩🏻‍💻	Daniela Cartagena	-	[Daniela](https://github.com/Daniela1026)
-👩🏻‍💻	Johanna Balcazar	-	[Johanna](https://github.com/LiJoBaZar)
-👨🏻‍💻	Luiyi Hurtado** -	[Luiyi](https://github.com/Luiyi-F)
+**👩🏻‍💻	Daniela Cartagena** -	[Daniela](https://github.com/Daniela1026)
+**👩🏻‍💻	Johanna Balcazar** -	[Johanna](https://github.com/LiJoBaZar)
+**👨🏻‍💻	Luiyi Hurtado** -	[Luiyi](https://github.com/Luiyi-F)
 
 
 
